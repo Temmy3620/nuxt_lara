@@ -6,9 +6,9 @@
       <button @click="onClickEdit">修正</button>
       <nuxt-link :to="{ name: 'index' }"><p>Book List</p></nuxt-link>
     </div>
-  </template>
+</template>
   
-  <script lang="ts">
+<script lang="ts">
   import Vue from 'vue'
   import { BookService, BookResponse } from '@/service/book'
   
@@ -45,4 +45,4 @@
       }
     }
   })
-  </script>
+</script>

@@ -38,4 +38,3 @@ export class BookService {
     await axios.delete(`/api/books/${bookId}`)
   }
 }
-
