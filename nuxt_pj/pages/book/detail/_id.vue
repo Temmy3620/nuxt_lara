@@ -4,7 +4,7 @@
       <input v-model="book.title" type="text" />
       <input v-model="book.author" type="text" />
       <button @click="onClickEdit">修正</button>
-      <nuxt-link :to="{ name: 'index' }"><p>Book List</p></nuxt-link>
+      <nuxt-link :to="{ name: 'todo' }"><p>Book List</p></nuxt-link>
     </div>
 </template>
   
@@ -14,7 +14,7 @@
   
   type Book = BookResponse
 
-  const bookService = new BookService();
+  const bookService = new BookService()
   
   interface DataType {
     book: Book
@@ -41,7 +41,7 @@
        onClickEdit() {
         const bookId = Number(this.$route.params.id)
         bookService.putBook(bookId, this.book)
-        this.$router.push({ name: 'index' })
+        this.$router.push({ name: 'todo' })
       }
     }
   })

@@ -26,7 +26,7 @@
   
   type Book = BookResponse
 
-  const bookService = new BookService();
+  const bookService = new BookService()
   
   interface DataType {
     form: Form
