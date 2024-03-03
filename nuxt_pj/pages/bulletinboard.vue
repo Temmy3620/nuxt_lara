@@ -4,33 +4,65 @@
         
         <v-virtual-scroll
           :item-height="100"
-          :height="600"
-          :items="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']"
+          :height="450"
+          :items="['1', '2', '3', '4', '5亞jsDCんかjssdvnlskdvlakdvlkdmvlkmvbksdblvsdmblskd', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']"
+          class="mt-10"
         >
           <template v-slot:default="{ item }">
-            <v-card class="mb-3">
+            <v-card>
+                
                 <v-card-text>
-                  <p>
-                    Item {{ item }}
-                  </p>
+                    <p>Item {{ item }}</p>
                 </v-card-text>
+                
             </v-card>
           </template>
         </v-virtual-scroll>
 
-        <v-col cols="12" sm="11" md="11" class="mt-10 mb-10"></v-col>
+        
+            <v-form
+                ref="form"
+                class="mt-15"
+                v-model="valid"
+                lazy-validation
+                >
+                
+                    <v-row>
+                        <v-col
+                        cols="11"
+                        >
+                            <v-textarea
+                            outlined
+                            name="input-7-4"
+                            label="Comment...."
+                            rows="2"
+                            auto-grow
+                            class="w-50"
+                            >
+                        
+                            </v-textarea>
+                        </v-col>
 
-        <v-card class="fixed-card">
-            <v-container>
-                <v-row>
+                        <v-col
+                        cols="1"
+                        >
+                            <v-btn
+                                class="mx-2"
+                                fab
+                                color="teal"
+                            >
+                                <v-icon>
+                                    mdi-comment-processing-outline
+                                </v-icon>
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                
+                
+            </v-form>
+                
+         
 
-                    
-
-                    
-                  
-                </v-row>
-            </v-container>
-        </v-card>
       </v-col>
       
       
@@ -44,16 +76,7 @@
   }
 </script>
 
-<style scoped>
-.fixed-card {
-  position: absolute;
-  bottom: calc(0px); /* ウィンドウの縦方向の中央から100px上に配置 */
-  left: calc(0px); /* ウィンドウの横方向の中央から150px左に配置 */
-  width: 100vw; /* 幅を指定 */
-  height: 150px;
-  z-index: 80;
-}
-</style>
+
 
 
   
