@@ -27,7 +27,7 @@
                         <p class="text-h6 text--primary">
                           {{ item.thread }}
                         </p>
-                        <div>{{ item.created_at }}</div>
+                        <div>{{ moment(item.created_at).format('YYYY/MM/DD HH:mm:ss') }}</div>
                 </v-card-text>
 
                 
@@ -83,6 +83,7 @@
 <script setup lang="ts">
     import Vue,{ ref } from 'vue'
     import { ThreadService, ThreadResponse } from '@/service/thread'
+    import moment from 'moment'
 
     type Thread = ThreadResponse
 
