@@ -1,4 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
+import { BACKEND_HOST } from './paramete'
+
+//const backend_host: string = "http://localhost:8000"
 
 export interface BookResponse {
   id: number
@@ -15,30 +18,30 @@ export class BookService {
   
   async fetchBooks(): Promise<BookResponse[]> {
     const { data } = await axios.get<AxiosResponse<BookResponse[]>>(
-      'http://localhost:8000/api/books'
+      BACKEND_HOST + '/api/books'
     )
     return data.data
   }
   
 
   async postBookData(bookRequest: BookRequest) {
-    await axios.post('http://localhost:8000/api/books', bookRequest)
+    await axios.post(BACKEND_HOST + '/api/books', bookRequest)
   }
 
   
   async fetchBook(bookId: number) {
     const { data } = await axios.get<AxiosResponse<BookResponse>>(
-      `http://localhost:8000/api/books/${bookId}`
+      BACKEND_HOST + `/api/books/${bookId}`
     )
     return data.data
   }
 
   putBook(bookId: number, data: BookRequest) {
-    axios.put(`http://localhost:8000/api/books/${bookId}`, data)
+    axios.put( BACKEND_HOST + `/api/books/${bookId}`, data)
   }
 
   async deleteBook(bookId: number) {
-    await axios.delete(`http://localhost:8000/api/books/${bookId}`)
+    await axios.delete(BACKEND_HOST + `/api/books/${bookId}`)
   }
   
 }

@@ -1,4 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
+import { BACKEND_HOST } from './paramete'
+
+//const backend_host: string = "http://localhost:8000"
 
 export interface ThreadResponse {
     id: number
@@ -14,13 +17,13 @@ export class ThreadService {
     
     async fetchThreads(): Promise<ThreadResponse[]> {
         const { data } = await axios.get<AxiosResponse<ThreadResponse[]>>(
-        'http://localhost:8000/api/threads'
+            BACKEND_HOST + '/api/threads'
         )
         return data.data
     }
 
     async postThreadData(threadRequest: ThreadRequest) {
-        await axios.post('http://localhost:8000/api/threads', threadRequest)
+        await axios.post(BACKEND_HOST + '/api/threads', threadRequest)
     }
     
 }
