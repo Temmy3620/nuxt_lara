@@ -23,10 +23,11 @@
             <v-card>
                 
                 <v-card-text>
-                    <p>
-                      {{ item.created_at }}
-                    </p>
-                    <p><b>{{ item.thread }}</b></p>
+                        <!--<div>user</div>-->
+                        <p class="text-h6 text--primary">
+                          {{ item.thread }}
+                        </p>
+                        <div>{{ item.created_at }}</div>
                 </v-card-text>
 
                 

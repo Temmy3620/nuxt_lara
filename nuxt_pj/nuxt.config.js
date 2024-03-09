@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - nuxt_pj',
-    title: 'nuxt_pj',
+    //titleTemplate: '%s - nuxt_pj',
+    title: 'bulletin',
     htmlAttrs: {
       lang: 'en',
     },
