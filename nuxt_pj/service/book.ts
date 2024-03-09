@@ -15,30 +15,30 @@ export class BookService {
   
   async fetchBooks(): Promise<BookResponse[]> {
     const { data } = await axios.get<AxiosResponse<BookResponse[]>>(
-      '/api/books'
+      'http://localhost:8000/api/books'
     )
     return data.data
   }
   
 
   async postBookData(bookRequest: BookRequest) {
-    await axios.post('/api/books', bookRequest)
+    await axios.post('http://localhost:8000/api/books', bookRequest)
   }
 
   
   async fetchBook(bookId: number) {
     const { data } = await axios.get<AxiosResponse<BookResponse>>(
-      `/api/books/${bookId}`
+      `http://localhost:8000/api/books/${bookId}`
     )
     return data.data
   }
 
   putBook(bookId: number, data: BookRequest) {
-    axios.put(`/api/books/${bookId}`, data)
+    axios.put(`http://localhost:8000/api/books/${bookId}`, data)
   }
 
   async deleteBook(bookId: number) {
-    await axios.delete(`/api/books/${bookId}`)
+    await axios.delete(`http://localhost:8000/api/books/${bookId}`)
   }
   
 }

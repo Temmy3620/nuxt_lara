@@ -14,13 +14,13 @@ export class ThreadService {
     
     async fetchThreads(): Promise<ThreadResponse[]> {
         const { data } = await axios.get<AxiosResponse<ThreadResponse[]>>(
-        '/api/threads'
+        'http://localhost:8000/api/threads'
         )
         return data.data
     }
 
     async postThreadData(threadRequest: ThreadRequest) {
-        await axios.post('/api/threads', threadRequest)
+        await axios.post('http://localhost:8000/api/threads', threadRequest)
     }
     
 }

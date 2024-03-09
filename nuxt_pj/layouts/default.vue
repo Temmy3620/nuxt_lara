@@ -79,7 +79,7 @@
         items: [
           {
             icon: 'mdi-apps',
-            title: 'Welcome',
+            title: 'Home',
             to: '/',
           },
           {

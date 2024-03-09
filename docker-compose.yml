@@ -6,10 +6,24 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     command: bash -c "curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && php-fpm"
+    tty: true
     volumes:
       - ./laravel_pj/:/app
       - ./logs/php-error.log:/var/log/error.log
       - ./logs/php-access.log:/var/log/access.log
+    networks:
+      - bridge
+  
+  node:
+    build:
+      context: .
+      dockerfile: ./docker/node/Dockerfile
+    ports:
+      - "3000:3000"
+    tty: true
+    volumes:
+      - ./nuxt_pj:/node:cached
+      - ./nuxt_pj/node_modules:/node/node_modules
     networks:
       - bridge
 
