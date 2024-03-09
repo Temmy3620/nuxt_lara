@@ -115,7 +115,9 @@
     const comment = ref('')
 
     async function onClickAdd() {
-
+        if(comment.value.trim().length == 0){
+            return
+        }
         await threadService.postThreadData({ thread: comment.value })
         console.log(comment.value)
         threads.value = await threadService.fetchThreads()

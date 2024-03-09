@@ -80,6 +80,11 @@
           {
             icon: 'mdi-apps',
             title: 'Home',
+            to: '/home',
+          },
+          {
+            icon: 'mdi-apps',
+            title: 'Home',
             to: '/',
           },
           {
