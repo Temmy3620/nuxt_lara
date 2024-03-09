@@ -12,17 +12,20 @@ export interface BookRequest {
 }
 
 export class BookService {
+  
   async fetchBooks(): Promise<BookResponse[]> {
     const { data } = await axios.get<AxiosResponse<BookResponse[]>>(
       '/api/books'
     )
     return data.data
   }
+  
 
   async postBookData(bookRequest: BookRequest) {
     await axios.post('/api/books', bookRequest)
   }
 
+  
   async fetchBook(bookId: number) {
     const { data } = await axios.get<AxiosResponse<BookResponse>>(
       `/api/books/${bookId}`
@@ -37,4 +40,5 @@ export class BookService {
   async deleteBook(bookId: number) {
     await axios.delete(`/api/books/${bookId}`)
   }
+  
 }

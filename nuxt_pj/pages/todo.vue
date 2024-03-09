@@ -8,6 +8,7 @@
         </nuxt-link>
         <button @click="onClickDelete(book.id)">削除</button>
       </ul>
+      
       <h3>新規追加</h3>
       <input v-model="form.title" type="text" placeholder="title" /><br />
       <input v-model="form.author" type="text" placeholder="author" /><br />
@@ -18,6 +19,7 @@
   <script lang="ts">
   import Vue from 'vue'
   import { BookService, BookResponse } from '@/service/book'
+  //import { BookService } from '@/service/book'
   
   interface Form {
     title: string
@@ -36,6 +38,7 @@
   export default Vue.extend({
     async asyncData() {
       const books = await bookService.fetchBooks()
+      console.log(books)
       return {
         books,
       }

@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Book;
+use App\Models\Thread;
 
-class BookController extends Controller
+class ThreadController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $books = Book::all();
+        
+        $threads = Thread::all();
         return response()->json([
             'message' => 'ok',
-            'data' => $books
+            'data' => $threads
         ], 200, [], JSON_UNESCAPED_UNICODE);
+        
     }
 
     /**
@@ -24,12 +26,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $book = Book::create($request->all());
+    
+        $thread = Thread::create($request->all());
         return response()->json([
-            'message' => 'Book created successfully',
-            'data' => $book
+            'message' => 'Thread created successfully',
+            'data' => $thread
         ], 201, [], JSON_UNESCAPED_UNICODE);
+        
     }
 
     /**
@@ -37,6 +40,7 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
+        /*
         $book = Book::find($id);
         if ($book) {
             return response()->json([
@@ -47,6 +51,7 @@ class BookController extends Controller
         return response()->json([
             'message' => 'Book not found',
         ], 404);
+        */
 
     }
 
@@ -55,6 +60,7 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        /*
         $update = [
             'title' => $request->title,
             'author' => $request->author
@@ -68,6 +74,7 @@ class BookController extends Controller
         return response()->json([
             'message' => 'Book not found',
         ], 404);
+        */
     }
 
     /**
@@ -75,6 +82,7 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
+        /*
         $book = Book::where('id', $id)->delete();
         if ($book) {
             return response()->json([
@@ -84,5 +92,6 @@ class BookController extends Controller
         return response()->json([
             'message' => 'Book not found',
         ], 404);
+        */
     }
 }
