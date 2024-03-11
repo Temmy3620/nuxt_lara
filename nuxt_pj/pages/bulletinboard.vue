@@ -27,7 +27,29 @@
                         <p class="text-h6 text--primary">
                           {{ item.thread }}
                         </p>
-                        <div>{{ moment(item.created_at).format('YYYY/MM/DD HH:mm:ss') }}</div>
+                        <v-row>
+                          <v-col
+                            cols="auto"
+                            class="d-flex align-end mr-auto"
+                          >
+                            <div>{{ moment(item.created_at).format('YYYY/MM/DD HH:mm:ss') }}</div>
+                          </v-col>
+                          <v-col cols="auto">
+                            
+                            <v-btn
+                              icon
+                              color="gray"
+                              @click="onClickDelete(item.id)"
+                              onclick="return confirm('削除しますが、よろしいですか？')"
+                            >
+                              <v-icon>mdi-trash-can-outline</v-icon>
+                            </v-btn>
+                            
+
+                          </v-col>
+                        </v-row>
+                        
+                        
                 </v-card-text>
 
                 
@@ -122,6 +144,11 @@
         console.log(comment.value)
         threads.value = await threadService.fetchThreads()
         comment.value = ""
+    }
+
+    async function onClickDelete(threadId: number) {
+        await threadService.deleteThread(threadId)
+        threads.value = await threadService.fetchThreads()
     }
 
 </script>

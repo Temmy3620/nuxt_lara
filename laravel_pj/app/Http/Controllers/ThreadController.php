@@ -82,16 +82,16 @@ class ThreadController extends Controller
      */
     public function destroy(string $id)
     {
-        /*
-        $book = Book::where('id', $id)->delete();
-        if ($book) {
+        
+        $result = Thread::where('id', $id)->delete();
+        if ($result) {
             return response()->json([
-                'message' => 'Book deleted successfully',
+                'message' => 'Thread deleted successfully',
             ], 200);
         }
         return response()->json([
-            'message' => 'Book not found',
+            'message' => 'Thread not found',
         ], 404);
-        */
+        
     }
 }

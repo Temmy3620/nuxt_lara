@@ -25,5 +25,9 @@ export class ThreadService {
     async postThreadData(threadRequest: ThreadRequest) {
         await axios.post(BACKEND_HOST + '/api/threads', threadRequest)
     }
+
+    async deleteThread(threadId: number) {
+        await axios.delete(BACKEND_HOST + `/api/threads/${threadId}`)
+    }
     
 }
