@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import localeJa from './locales/ja.json'
+import localeEn from './locales/en.json'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -12,7 +14,7 @@ export default {
     //titleTemplate: '%s - nuxt_pj',
     title: 'bulletin',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
@@ -28,6 +30,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
+
+  
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,9 +52,40 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
-  ],
+    '@nuxtjs/proxy',
+    ['nuxt-i18n', {
+      strategy: "prefix_and_default",
+      locales: [
+        {
+          code: 'en',
+          iso: 'en_US',
+          file: 'en.json'
+        },
+        {
+          code: 'ja',
+          iso: 'ja_JP',
+          file: 'ja.json'
+        }
+      ],
+      defaultLocale: 'ja',
+      langDir: 'locales/',
+      vueI18n: {
+        fallbackLocale: 'ja',
+        /*
+        messages: {                        // メッセージはここで設定
+          "en": {
+            "hello": "HELLO"
+          },
+          "ja": {
+            "hello": "ハロー"
+          }
+        }
+        */
+      }
+    }]
 
+  ],
+  
   /*
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

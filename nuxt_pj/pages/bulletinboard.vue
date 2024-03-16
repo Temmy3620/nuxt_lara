@@ -1,59 +1,49 @@
 <template>
+    
     <v-row justify="center" align="center">
       <v-col cols="12" sm="12" md="12">
         
-        <!--
         <v-virtual-scroll
-          :item-height="150"
-          :height="450"
-          :items="['1', '2', '3', '4', '5亞jsDCんかjssdvnlskdvlakdvlkdmvlkmvbksdblvsdmblskd', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']"
-          class="mt-10"
-        >
-        -->
-        
-        
-        <v-virtual-scroll
-          :item-height="150"
+          :item-height="120"
           :height="450"
           :items="threads"
           class="mt-10"
         >
         
           <template v-slot:default="{ item }">
-            <v-card>
-                
-                <v-card-text>
-                        <!--<div>user</div>-->
-                        <p class="text-h6 text--primary">
-                          {{ item.thread }}
-                        </p>
+            
+            <v-banner
+              single-line
+            >
+                <v-list-item two-line class="pl-0">
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.thread }}</v-list-item-title>
                         <v-row>
-                          <v-col
+                            <v-col
                             cols="auto"
                             class="d-flex align-end mr-auto"
-                          >
-                            <div>{{ moment(item.created_at).format('YYYY/MM/DD HH:mm:ss') }}</div>
-                          </v-col>
-                          <v-col cols="auto">
+                            >
+                            <v-list-item-subtitle>
+                                {{ moment(item.created_at).format('YYYY/MM/DD HH:mm:ss') }}
+                            </v-list-item-subtitle>
+                            </v-col>
+                            <v-col cols="auto">
                             
                             <v-btn
-                              icon
-                              color="gray"
-                              @click="onClickDelete(item.id)"
-                              onclick="return confirm('削除しますが、よろしいですか？')"
+                                icon
+                                color="gray"
+                                @click="onClickDelete(item.id)"
                             >
-                              <v-icon>mdi-trash-can-outline</v-icon>
+                                <v-icon>mdi-trash-can-outline</v-icon>
                             </v-btn>
                             
 
-                          </v-col>
+                            </v-col>
                         </v-row>
                         
-                        
-                </v-card-text>
-
-                
-            </v-card>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-banner>
           </template>
         </v-virtual-scroll>
 
@@ -106,12 +96,12 @@
     import Vue,{ ref } from 'vue'
     import { ThreadService, ThreadResponse } from '@/service/thread'
     import moment from 'moment'
+    
+
+    
 
     type Thread = ThreadResponse
 
-    
-    
-    //type threadService = ThreadService
     const threadService = new ThreadService()
     const threads = ref<Thread[]>([]);
     
@@ -126,13 +116,6 @@
         }
     }
     asyncData()
-        
-
-    
-    //console.log(list)
-    //const threads = threadService.fetchThreads()
-    //console.log(threads)
-
 
     const comment = ref('')
 
@@ -147,8 +130,11 @@
     }
 
     async function onClickDelete(threadId: number) {
-        await threadService.deleteThread(threadId)
-        threads.value = await threadService.fetchThreads()
+        if(confirm( $t("delete_confirm") )){
+            await threadService.deleteThread(threadId)
+            threads.value = await threadService.fetchThreads()
+        }
+        
     }
 
 </script>

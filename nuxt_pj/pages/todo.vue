@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>List</h2>
+      <h2>{{ $t("list") }}</h2>
       <ul v-for="(book, i) in books" :key="i">
         <li>{{ book.title }}</li>
         <nuxt-link :to="{ name: 'book-detail-id', params: { id: book.id } }"
